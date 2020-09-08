@@ -8,10 +8,13 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(top: 60, left: 40, right: 40),
+        padding: EdgeInsets.all(20.0),
         color: Colors.white,
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 40,
+            ),
             SizedBox(
               width: 128,
               height: 128,
@@ -69,7 +72,7 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
             Container(
               height: 60,

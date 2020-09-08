@@ -1,4 +1,4 @@
-import 'package:cai_aqui/pages/login_page.dart';
+import 'package:cai_aqui/pages/alert_page.dart';
 import 'package:flutter/material.dart';
 
 import 'contact_page.dart';
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
         color: Color(0xFFF2F3F6),
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: <Widget>[
             SizedBox(
@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
             SizedBox(
               child: Center(
                 child: Text(
-                  "Cique em monitorar para começar",
+                  "Clique em monitorar para começar",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -134,12 +134,12 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
-                      ),
-                    );
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                     builder: (context) => AlertPage(),
+                       ),
+                     );
                   },
                 ),
               ),

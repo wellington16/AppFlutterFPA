@@ -1,5 +1,7 @@
 // import 'dart:async';
 import 'package:cai_aqui/pages/login_page.dart';
+import 'package:cai_aqui/pages/signup_page.dart';
+import 'package:cai_aqui/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:sensors/sensors.dart';
 
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(),
+      home: Splash(),
     );
   }
 }
