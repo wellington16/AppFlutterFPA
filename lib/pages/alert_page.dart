@@ -4,12 +4,11 @@ import 'package:cai_aqui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'contact_page.dart';
-
 class AlertPage extends StatefulWidget {
   @override
   _OtpTimerState createState() => _OtpTimerState();
 }
+
 class _OtpTimerState extends State<AlertPage> {
   final interval = const Duration(seconds: 1);
 
@@ -43,7 +42,7 @@ class _OtpTimerState extends State<AlertPage> {
     return Scaffold(
       body: Container(
         color: Color(0xFFF2F3F6),
-        padding:EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0) ,
+        padding: EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
         child: ListView(
           children: <Widget>[
             SizedBox(
@@ -59,7 +58,7 @@ class _OtpTimerState extends State<AlertPage> {
                     color: Colors.black,
                   ),
                   textAlign: TextAlign.center,
-                 ),
+                ),
               ),
             ),
             SizedBox(
@@ -69,19 +68,16 @@ class _OtpTimerState extends State<AlertPage> {
               child: Center(
                 child: Text(
                   timerText,
-
                   style: TextStyle(
                     fontSize: 80,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     backgroundColor: Colors.red,
                   ),
-
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
-
             SizedBox(
               height: 20,
             ),
@@ -89,8 +85,8 @@ class _OtpTimerState extends State<AlertPage> {
               child: Center(
                 child: Text(
                   "Um pedido de Ajuda será enviado para os "
-                      "números cadastrados, assim que o "
-                      "tempo chegar em 00:00. ",
+                  "números cadastrados, assim que o "
+                  "tempo chegar em 00:00. ",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w500,
@@ -112,12 +108,6 @@ class _OtpTimerState extends State<AlertPage> {
                 ),
                 // color: Colors.green,
                 color: Colors.red,
-//                gradient: LinearGradient(
-//                  begin: Alignment.topLeft,
-//                  end: Alignment.bottomRight,
-//                  stops: [0.3, 1],
-//                  color: Colors.red,
-//                ),
               ),
               child: SizedBox.expand(
                 child: FlatButton(
@@ -133,75 +123,19 @@ class _OtpTimerState extends State<AlertPage> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-
                     ],
                   ),
                   onPressed: () {
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                     builder: (context) => HomePage(),
-                       ),
-                     );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ),
+                    );
                   },
                 ),
               ),
             ),
-//            SizedBox(
-//              height: 10,
-//            ),
-//            Container(
-//              height: 60,
-//              alignment: Alignment.centerLeft,
-//              decoration: BoxDecoration(
-//                borderRadius: BorderRadius.all(
-//                  Radius.circular(5),
-//                ),
-//                // color: Colors.green,
-//                gradient: LinearGradient(
-//                  begin: Alignment.topLeft,
-//                  end: Alignment.bottomRight,
-//                  stops: [0.3, 1],
-//                  colors: [
-//                    Color(0XFF87cefa),
-//                    Color(0XFF672c81),
-//                  ],
-//                ),
-//              ),
-//              child: SizedBox.expand(
-//                child: FlatButton(
-//                  child: Row(
-//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                    children: <Widget>[
-//                      Text(
-//                        "Configurações",
-//                        style: TextStyle(
-//                          fontWeight: FontWeight.bold,
-//                          color: Colors.white,
-//                          fontSize: 20,
-//                        ),
-//                        textAlign: TextAlign.left,
-//                      ),
-//                      Container(
-//                        child: SizedBox(
-//                          child: Image.asset("assets/logo.png"),
-//                          height: 28,
-//                          width: 28,
-//                        ),
-//                      )
-//                    ],
-//                  ),
-//                  onPressed: () {
-//                    Navigator.push(
-//                      context,
-//                      MaterialPageRoute(
-//                        builder: (context) => ContatosPage(),
-//                      ),
-//                    );
-//                  },
-//                ),
-//              ),
-//            ),
           ],
         ),
       ),
