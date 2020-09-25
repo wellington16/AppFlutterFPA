@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cai_aqui/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+bool isPlayning = true;
 
 class AlertPage extends StatefulWidget {
   @override
@@ -12,7 +15,7 @@ class AlertPage extends StatefulWidget {
 class _OtpTimerState extends State<AlertPage> {
   final interval = const Duration(seconds: 1);
 
-  final int timerMaxSeconds = 60;
+  final int timerMaxSeconds = 10;
 
   int currentSeconds = 0;
 
@@ -20,13 +23,26 @@ class _OtpTimerState extends State<AlertPage> {
       '${((timerMaxSeconds - currentSeconds) ~/ 60).toString().padLeft(2, '0')}: ${((timerMaxSeconds - currentSeconds) % 60).toString().padLeft(2, '0')}';
 
   startTimeout([int milliseconds]) {
+    advancedPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: advancedPlayer);
     var duration = interval;
     Timer.periodic(duration, (timer) {
       setState(() {
         print(timer.tick);
         currentSeconds = timer.tick;
-        SystemSound.play(SystemSoundType.click);
-        if (timer.tick >= timerMaxSeconds) timer.cancel();
+        if (isPlayning == true) {
+          _playFile();
+          isPlayning = false;
+        }
+      });
+
+      setState(() {
+        if (currentSeconds >= timerMaxSeconds) {
+          timer.cancel();
+          _stopFile();
+          Navigator.pop(context);
+          isPlayning = true;
+        }
       });
     });
   }
@@ -35,6 +51,21 @@ class _OtpTimerState extends State<AlertPage> {
   void initState() {
     startTimeout();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    advancedPlayer?.dispose();
+    isPlayning = true;
+  }
+
+  void _playFile() async {
+    advancedPlayer = await audioCache.play('sirene.mp3');
+  }
+
+  void _stopFile() {
+    advancedPlayer?.stop();
   }
 
   @override
@@ -126,6 +157,11 @@ class _OtpTimerState extends State<AlertPage> {
                     ],
                   ),
                   onPressed: () {
+                    setState(() {
+                      _stopFile();
+                      isPlayning = true;
+                      Navigator.pop(context);
+                    });
                     Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -8,12 +8,11 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-
   @override
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
-    Future.delayed(Duration(seconds: 180)).then((_) {
+    Future.delayed(Duration(seconds: 3)).then((_) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => LoginPage()));
     });
@@ -22,10 +21,9 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-        Container(
+      body: Container(
         color: Colors.white,
-          child: ListView(
+        child: ListView(
           children: <Widget>[
             Container(
               width: 150,
@@ -48,8 +46,8 @@ class _SplashState extends State<Splash> {
             ),
           ],
         ),
-          padding:EdgeInsets.fromLTRB(20.0, 150.0, 20.0, 60.0) ,
-        ),
+        padding: EdgeInsets.fromLTRB(20.0, 150.0, 20.0, 60.0),
+      ),
     );
   }
 }

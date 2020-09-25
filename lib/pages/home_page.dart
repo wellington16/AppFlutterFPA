@@ -1,7 +1,12 @@
 import 'package:cai_aqui/pages/alert_page.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 import 'contact_page.dart';
+
+AudioPlayer advancedPlayer = AudioPlayer();
+AudioCache audioCache = AudioCache(fixedPlayer: advancedPlayer);
 
 class HomePage extends StatelessWidget {
   @override
@@ -134,12 +139,12 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   onPressed: () {
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                     builder: (context) => AlertPage(),
-                       ),
-                     );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AlertPage(),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -208,6 +213,7 @@ class HomePage extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
+  // advancedPlayer.stop();
   return new WillPopScope(
     child: new Scaffold(
       appBar: new AppBar(
