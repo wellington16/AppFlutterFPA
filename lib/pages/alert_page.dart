@@ -5,7 +5,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:cai_aqui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-bool isPlayning = true;
+bool isPlayning = false;
 
 class AlertPage extends StatefulWidget {
   @override
@@ -30,9 +30,9 @@ class _OtpTimerState extends State<AlertPage> {
       setState(() {
         print(timer.tick);
         currentSeconds = timer.tick;
-        if (isPlayning == true) {
+        if (isPlayning == false) {
           _playFile();
-          isPlayning = false;
+          isPlayning = true;
         }
       });
 
@@ -41,7 +41,7 @@ class _OtpTimerState extends State<AlertPage> {
           timer.cancel();
           _stopFile();
           Navigator.pop(context);
-          isPlayning = true;
+          isPlayning = false;
         }
       });
     });
@@ -57,7 +57,7 @@ class _OtpTimerState extends State<AlertPage> {
   void dispose() {
     super.dispose();
     advancedPlayer?.dispose();
-    isPlayning = true;
+    isPlayning = false;
   }
 
   void _playFile() async {
@@ -159,7 +159,7 @@ class _OtpTimerState extends State<AlertPage> {
                   onPressed: () {
                     setState(() {
                       _stopFile();
-                      isPlayning = true;
+                      isPlayning = false;
                       Navigator.pop(context);
                     });
                     Navigator.push(
