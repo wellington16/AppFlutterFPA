@@ -1,4 +1,4 @@
-import 'package:cai_aqui/pages/login_page.dart';
+import 'package:cai_aqui/views/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

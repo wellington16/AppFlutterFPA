@@ -1,6 +1,6 @@
-import 'package:cai_aqui/pages/reset_password_page.dart';
-import 'package:cai_aqui/pages/home_page.dart';
-import 'package:cai_aqui/pages/signup_page.dart';
+import 'package:cai_aqui/views/reset_password_page.dart';
+import 'package:cai_aqui/views/home_page.dart';
+import 'package:cai_aqui/views/signup_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {

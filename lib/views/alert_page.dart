@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:cai_aqui/pages/home_page.dart';
+import 'package:cai_aqui/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 bool isPlayning = false;
