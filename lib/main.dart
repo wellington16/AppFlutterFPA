@@ -1,6 +1,8 @@
 // import 'dart:async';
-import 'package:cai_aqui/models/contacts.dart';
+
 import 'package:cai_aqui/provider/contacts_provider.dart';
+import 'package:cai_aqui/routes/app_routes.dart';
+import 'package:cai_aqui/views/contact_form_page.dart';
 import 'package:cai_aqui/views/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,90 +31,10 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.deepOrange,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: Splash(),
+          routes: {
+            AppRoutes.HOME: (_) => Splash(),
+            AppRoutes.CONTACT_FORM: (ctx) => ContactForm(),
+          },
         ));
   }
 }
-
-// class LoginPage extends StatefulWidget {
-//   @override
-//   _LoginState createState() => _LoginState();
-// }
-
-// class _LoginState extends State<LoginPage> {
-//   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final emailfield = TextField(
-//       obscureText: false,
-//       style: style,
-//       decoration: InputDecoration(
-//           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-//           hintText: "Email",
-//           border:
-//               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-//     );
-
-//     final passwordfield = TextField(
-//       obscureText: true,
-//       style: style,
-//       decoration: InputDecoration(
-//           contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-//           hintText: "Senha",
-//           border:
-//               OutlineInputBorder(borderRadius: BorderRadius.circular(32.0))),
-//     );
-
-//     final buttonLogin = ButtonTheme(
-//       minWidth: MediaQuery.of(context).size.width,
-//       padding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
-//       child: RaisedButton(
-//           color: Colors.blue,
-//           child: Text(
-//             "Entrar",
-//             textAlign: TextAlign.center,
-//             style: style.copyWith(
-//               color: Colors.white,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           onPressed: () {},
-//           shape: RoundedRectangleBorder(
-//               borderRadius: BorderRadius.circular(30.0))),
-//     );
-
-//     return Scaffold(
-//         body: Center(
-//       child: SingleChildScrollView(
-//         child: Container(
-//           color: Colors.white,
-//           padding: const EdgeInsets.all(40.0),
-//           child: Column(
-//             children: <Widget>[
-//               SizedBox(
-//                 height: 150.0,
-//                 child: Image.asset(
-//                   "images/login.png",
-//                   fit: BoxFit.contain,
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 40.0,
-//               ),
-//               emailfield,
-//               SizedBox(
-//                 height: 20.0,
-//               ),
-//               passwordfield,
-//               SizedBox(
-//                 height: 30.0,
-//               ),
-//               buttonLogin,
-//             ],
-//           ),
-//         ),
-//       ),
-//     ));
-//   }
-// }

@@ -1,11 +1,15 @@
-import 'package:cai_aqui/views/reset_password_page.dart';
+import 'package:cai_aqui/provider/contacts_provider.dart';
 import 'package:cai_aqui/views/home_page.dart';
+import 'package:cai_aqui/views/reset_password_page.dart';
 import 'package:cai_aqui/views/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final ContactsProvider contact = Provider.of(context);
+    contact.all;
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(20.0),
