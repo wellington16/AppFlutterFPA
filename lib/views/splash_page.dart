@@ -34,7 +34,7 @@ class _SplashState extends State<Splash> {
               child: Center(
                 child: SizedBox(
                   child: Text(
-                    "Caí Aqui",
+                    "Caí Aqui!",
                     style: TextStyle(
                       fontSize: 50,
                       fontWeight: FontWeight.w500,

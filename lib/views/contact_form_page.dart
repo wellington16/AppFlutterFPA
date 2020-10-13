@@ -1,6 +1,7 @@
 import 'package:cai_aqui/models/contacts.dart';
 import 'package:cai_aqui/provider/contacts_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class ContactForm extends StatefulWidget {
@@ -58,7 +59,15 @@ class _ContactFormState extends State<ContactForm> {
                     avatar: _formData['avatar'],
                   ),
                 );
-
+                Fluttertoast.showToast(
+                  msg: "Cadastro salvo com sucesso!",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 2,
+                  backgroundColor: Colors.green,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
                 setState(() {
                   isloading = false;
                 });

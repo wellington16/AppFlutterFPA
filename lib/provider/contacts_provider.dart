@@ -13,12 +13,13 @@ class ContactsProvider with ChangeNotifier {
   final List<Contact> loadedContacts = [];
 
   Future<void> get all async {
+    // Pegar todos
     final response = await http.get("$_baseUrl/contacts.json?");
     if (response != null && response.statusCode == 200) {
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       extractedData.forEach((profileId, profileData) {
-        print(profileId);
-        print(profileData);
+        // print(profileId);
+        // print(profileData);
 
         _items.putIfAbsent(
           profileId,
@@ -36,13 +37,10 @@ class ContactsProvider with ChangeNotifier {
 
   int get count {
     return _items.length;
-    // print(loadedContacts.length);
-    // return loadedContacts.length;
   }
 
   Contact byIndex(int i) {
     return _items.values.elementAt(i);
-    // return loadedContacts.elementAt(i);
   }
 
   Future<void> put(Contact contact) async {
@@ -101,6 +99,7 @@ class ContactsProvider with ChangeNotifier {
   }
 
   Future<void> remove(Contact contact) async {
+    // remove
     if (contact != null && contact.id != null) {
       await http.delete(
         "$_baseUrl/contacts/${contact.id}.json",
