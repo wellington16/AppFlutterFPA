@@ -8,7 +8,6 @@ import 'package:cai_aqui/views/signup_page.dart';
 import 'package:cai_aqui/views/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-// import 'package:sensors/sensors.dart';
 
 // import 'snake.dart';
 

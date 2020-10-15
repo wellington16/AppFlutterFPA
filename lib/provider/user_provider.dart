@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class UserProvider with ChangeNotifier {
-  static const _baseUrl = '';
+  static const _baseUrl = 'https://caiaqui-firebase-teste.firebaseio.com/';
   Map<String, User> _items = {...DUMMY_USER};
   final List<User> loadeduser = [];
   var resultado = false;

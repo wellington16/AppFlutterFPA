@@ -15,7 +15,7 @@ class AlertPage extends StatefulWidget {
 class _OtpTimerState extends State<AlertPage> {
   final interval = const Duration(seconds: 1);
 
-  final int timerMaxSeconds = 10;
+  final int timerMaxSeconds = 30;
 
   int currentSeconds = 0;
 
@@ -115,7 +115,7 @@ class _OtpTimerState extends State<AlertPage> {
             SizedBox(
               child: Center(
                 child: Text(
-                  "Um pedido de Ajuda será enviado para os "
+                  "Um pedido de ajuda será enviado para os "
                   "números cadastrados, assim que o "
                   "tempo chegar em 00:00. ",
                   style: TextStyle(

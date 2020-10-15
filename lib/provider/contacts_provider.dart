@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ContactsProvider with ChangeNotifier {
-  static const _baseUrl = '';
+  static const _baseUrl = 'https://caiaqui-firebase-teste.firebaseio.com/';
   Map<String, Contact> _items = {...DUMMY_CONTACTS};
   final List<Contact> loadedContacts = [];
 

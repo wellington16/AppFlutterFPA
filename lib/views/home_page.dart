@@ -1,16 +1,33 @@
+import 'dart:async';
+
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cai_aqui/views/alert_page.dart';
 import 'package:flutter/material.dart';
+import 'package:sensors/sensors.dart';
 
 import 'contact_page.dart';
 
 AudioPlayer advancedPlayer = AudioPlayer();
 AudioCache audioCache = AudioCache(fixedPlayer: advancedPlayer);
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Object> _accelerometerValues;
+
+  List<StreamSubscription<dynamic>> _streamSubscriptions =
+      <StreamSubscription<dynamic>>[];
+
   @override
   Widget build(BuildContext context) {
+    final List<String> accelerometer =
+        _accelerometerValues?.map((Object v) => v.toString())?.toList();
+
+    // print(accelerometer);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -145,6 +162,7 @@ class HomePage extends StatelessWidget {
                         builder: (context) => AlertPage(),
                       ),
                     );
+                    // }
                   },
                 ),
               ),
@@ -209,27 +227,30 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
 
-@override
-Widget build(BuildContext context) {
-  // advancedPlayer.stop();
-  return new WillPopScope(
-    child: new Scaffold(
-      appBar: new AppBar(
-          // title: new Text('Page 2'),
-          ),
-      body: new Center(
-          // child: new Text('PAGE 2'),
-          ),
-    ),
-    onWillPop: () async {
-      return false;
-    },
-  );
-}
+  @override
+  void dispose() {
+    super.dispose();
+    for (StreamSubscription<dynamic> subscription in _streamSubscriptions) {
+      subscription.cancel();
+    }
+  }
 
-Future<T> pushPage<T>(BuildContext context, Widget page) {
-  return Navigator.of(context)
-      .push<T>(MaterialPageRoute(builder: (context) => page));
+  @override
+  void initState() {
+    super.initState();
+    _streamSubscriptions
+        .add(accelerometerEvents.listen((AccelerometerEvent event) {
+      setState(() {
+        int now = (new DateTime.now()).millisecondsSinceEpoch;
+        now = (now / 1000).round();
+        _accelerometerValues = <Object>[
+          event.x.toInt(),
+          event.y.toInt(),
+          event.z.toInt(),
+          now
+        ];
+      });
+    }));
+  }
 }
