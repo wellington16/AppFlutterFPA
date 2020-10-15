@@ -1,4 +1,4 @@
-package com.example.cai_aqui
+package com.jualabs.cai_aqui
 
 import io.flutter.embedding.android.FlutterActivity
 

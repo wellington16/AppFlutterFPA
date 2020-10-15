@@ -1,5 +1,3 @@
-// import 'dart:async';
-
 import 'package:cai_aqui/provider/contacts_provider.dart';
 import 'package:cai_aqui/provider/user_provider.dart';
 import 'package:cai_aqui/routes/app_routes.dart';
@@ -8,8 +6,6 @@ import 'package:cai_aqui/views/signup_page.dart';
 import 'package:cai_aqui/views/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-// import 'snake.dart';
 
 void main() {
   runApp(MyApp());
