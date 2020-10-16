@@ -16,7 +16,6 @@ class _OtpTimerState extends State<AlertPage> {
   final interval = const Duration(seconds: 1);
 
   final int timerMaxSeconds = 30;
-
   int currentSeconds = 0;
 
   String get timerText =>
@@ -27,23 +26,25 @@ class _OtpTimerState extends State<AlertPage> {
     audioCache = AudioCache(fixedPlayer: advancedPlayer);
     var duration = interval;
     Timer.periodic(duration, (timer) {
-      setState(() {
-        print(timer.tick);
-        currentSeconds = timer.tick;
-        if (isPlayning == false) {
-          _playFile();
-          isPlayning = true;
-        }
-      });
+      // currentSeconds = timer.tick;
 
       setState(() {
-        if (currentSeconds >= timerMaxSeconds) {
-          timer.cancel();
-          _stopFile();
-          Navigator.pop(context);
-          isPlayning = false;
-        }
+        // print(timer.tick);
+        currentSeconds = timer.tick;
+        print(currentSeconds);
       });
+
+      if (isPlayning == false) {
+        _playFile();
+        isPlayning = true;
+      } else if (currentSeconds >= timerMaxSeconds) {
+        timer.cancel();
+        _stopFile();
+        advancedPlayer?.dispose();
+        isPlayning = true;
+        currentSeconds = 0;
+        Navigator.pop(context);
+      }
     });
   }
 
@@ -73,7 +74,7 @@ class _OtpTimerState extends State<AlertPage> {
     return Scaffold(
       body: Container(
         color: Color(0xFFF2F3F6),
-        padding: EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 20.0),
+        padding: EdgeInsets.all(20),
         child: ListView(
           children: <Widget>[
             SizedBox(
@@ -84,7 +85,7 @@ class _OtpTimerState extends State<AlertPage> {
                 child: Text(
                   "Queda Detectada!",
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
@@ -100,7 +101,7 @@ class _OtpTimerState extends State<AlertPage> {
                 child: Text(
                   timerText,
                   style: TextStyle(
-                    fontSize: 80,
+                    fontSize: 50,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     backgroundColor: Colors.red,
@@ -119,7 +120,7 @@ class _OtpTimerState extends State<AlertPage> {
                   "números cadastrados, assim que o "
                   "tempo chegar em 00:00. ",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.w500,
                     color: Color(0XFF23af23),
                   ),
@@ -131,7 +132,7 @@ class _OtpTimerState extends State<AlertPage> {
               height: 20,
             ),
             Container(
-              height: 80,
+              height: 40,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -150,24 +151,18 @@ class _OtpTimerState extends State<AlertPage> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: 40,
+                          fontSize: 35,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
                   onPressed: () {
-                    setState(() {
-                      _stopFile();
-                      isPlayning = false;
-                      Navigator.pop(context);
-                    });
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ),
-                    );
+                    _stopFile();
+                    advancedPlayer?.dispose();
+                    Navigator.pop(context);
+                    isPlayning = true;
+                    currentSeconds = 0;
                   },
                 ),
               ),

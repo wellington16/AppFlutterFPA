@@ -14,7 +14,7 @@ class ContactsProvider with ChangeNotifier {
 
   Future<void> get all async {
     // Pegar todos
-    final response = await http.get("$_baseUrl/contacts.json?");
+    final response = await http.get("$_baseUrl/contacts.json");
     if (response != null && response.statusCode == 200) {
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       extractedData.forEach((profileId, profileData) {

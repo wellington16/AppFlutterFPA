@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:cai_aqui/models/user.dart';
 import 'package:cai_aqui/provider/contacts_provider.dart';
 import 'package:cai_aqui/provider/user_provider.dart';
 import 'package:cai_aqui/routes/app_routes.dart';

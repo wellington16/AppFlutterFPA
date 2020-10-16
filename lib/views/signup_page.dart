@@ -205,7 +205,7 @@ class _SignupPageState extends State<SignupPage> {
                       initialValue: _formData['comodos'],
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
-                        labelText: "Cômodos",
+                        labelText: "Quantidade de Cômodos",
                         labelStyle: TextStyle(
                           color: Colors.black38,
                           fontWeight: FontWeight.w400,
@@ -259,7 +259,7 @@ class _SignupPageState extends State<SignupPage> {
                             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                         RegExp regex = new RegExp(pattern);
                         if (!regex.hasMatch(value)) {
-                          return "email inválido!";
+                          return "Email inválido!";
                         }
 
                         return null;
@@ -296,7 +296,7 @@ class _SignupPageState extends State<SignupPage> {
                         }
 
                         if (!validateStructure(value)) {
-                          return "Senha Inválida!";
+                          return "Senha Inválida! Exemplo de senha Válida: Tusing6!";
                         }
                         if (value.trim().length < 6) {
                           return "Senha muito pequena. No mínimo 3 letras.";

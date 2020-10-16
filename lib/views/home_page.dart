@@ -26,7 +26,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final List<String> accelerometer =
         _accelerometerValues?.map((Object v) => v.toString())?.toList();
-
+    // isPlayning = true;
+    // advancedPlayer?.stop();
     // print(accelerometer);
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +62,15 @@ class _HomePageState extends State<HomePage> {
                 Icons.more_vert,
                 color: Color(0xFFBABABA),
               ),
-              onPressed: () => {},
+              onPressed: () => {
+                isPlayning = false,
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ContatosPage(),
+                  ),
+                ),
+              },
             ),
           ),
         ],
@@ -159,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AlertPage(),
+                        builder: (_) => AlertPage(),
                       ),
                     );
                     // }
@@ -194,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "Configurações",
+                        "Contatos",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -212,6 +221,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   onPressed: () {
+                    isPlayning = false;
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -239,9 +249,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    // advancedPlayer?.dispose();
     _streamSubscriptions
         .add(accelerometerEvents.listen((AccelerometerEvent event) {
       setState(() {
+        // advancedPlayer?.dispose();
         int now = (new DateTime.now()).millisecondsSinceEpoch;
         now = (now / 1000).round();
         _accelerometerValues = <Object>[
